@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace PresentationLayer
         public MainWindow()
         {
             InitializeComponent();
+            Deck myDeck = new Deck(2);
+            myDeck.Shuffle();
+            foreach (var item in myDeck.MyDeck)
+            {
+                testBox.Items.Add(item);
+            }
+            testBox.Items.Add("Your card is" + myDeck.Draw());
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
