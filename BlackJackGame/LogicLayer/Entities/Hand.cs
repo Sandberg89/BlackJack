@@ -8,10 +8,15 @@ namespace LogicLayer.Entities
     {
         private List<Card> hand = new List<Card>();
         // Look into if there is a better way 
-        Deck newDeck = new Deck(1);
+        Deck newDeck;
+        private Card _card;
 
         public Hand()
         {
+            this.newDeck = new Deck(1);
+            newDeck.InitializeDeck();
+            newDeck.Shuffle();
+            this._card = new Card();
         }
 
         //return the amount of cards the player have 
@@ -36,10 +41,20 @@ namespace LogicLayer.Entities
                 return totalScore;
             }
         }
-
+        /// <summary>
+        /// Draw a new card to your hand
+        /// </summary>
         public void AddCard()
         {
-            Card cardToAdd = newDeck.Draw();
+            hand.Add(newDeck.DrawNextCard());
+        }
+
+        /// <summary>
+        /// Empty your hand of cards 
+        /// </summary>
+        public void ClearHand()
+        {
+            hand.Clear();
         }
     }
 }

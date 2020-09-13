@@ -6,8 +6,14 @@ namespace LogicLayer.Entities
 {
     public class Player
     {
+        private Hand hand;
 
-        public Hand PlayerHand { get; set; }
+        public Player()
+        {
+            this.hand = new Hand();
+        }
+
+        public Hand PlayerHand { get { return hand; } set { hand = value; } }
 
         public bool IsFinished { get; set; }
 
@@ -17,6 +23,8 @@ namespace LogicLayer.Entities
             get; 
             set; 
         }
+
+
 
     }
 }

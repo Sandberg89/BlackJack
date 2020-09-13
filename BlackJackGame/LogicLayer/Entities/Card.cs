@@ -17,6 +17,10 @@ namespace LogicLayer.Entities
             this.CardSuite = suit;
         }
 
+        public Card()
+        {
+        }
+
         public override string ToString()
         {
             return CardValue + " " + CardSuite;

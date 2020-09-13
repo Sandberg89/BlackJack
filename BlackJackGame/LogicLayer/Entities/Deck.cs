@@ -9,7 +9,7 @@ namespace LogicLayer.Entities
 {
     public class Deck
     {
-        private List<Card> myDeck = new List<Card>();
+        private List<Card> myDeck;
 
         public int NumberOfDecks { get; set; }
 
@@ -17,11 +17,12 @@ namespace LogicLayer.Entities
 
         public Deck(int decks)
         {
-            this.NumberOfDecks = decks;
+            this.myDeck = new List<Card>();
+            this.NumberOfDecks = 1;
         }
 
         //This method will create a deck with 52 cards times numberOfDecks 
-        public void FillDeckWithCards()
+        public void InitializeDeck()
         {
             //Create the deck 
             foreach (SuitType cardSuit in Enum.GetValues(typeof(SuitType)))
@@ -44,7 +45,7 @@ namespace LogicLayer.Entities
         }
 
         //Draw the card on the top of the list. Since it's shuffled we will get a random card 
-        public Card Draw()
+        public Card DrawNextCard()
         {
             Card topCardInDeck = myDeck[0];
             myDeck.RemoveAt(0);

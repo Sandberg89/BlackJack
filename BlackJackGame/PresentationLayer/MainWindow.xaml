@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.5,0.481">
-        <ListBox HorizontalAlignment="Left" Height="197" Margin="10,10,0,0" VerticalAlignment="Top" Width="201" SelectionChanged="ListBox_SelectionChanged" Name="testBox"/>
-
+        <Button Content="Start Game" HorizontalAlignment="Left" Margin="336,389,0,0" VerticalAlignment="Top" Width="75" Name="StartBtn" Click="StartBtn_Click"/>
     </Grid>
 </Window>

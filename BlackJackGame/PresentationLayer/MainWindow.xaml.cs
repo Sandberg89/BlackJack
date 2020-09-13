@@ -21,22 +21,27 @@ namespace PresentationLayer
     /// </summary>
     public partial class MainWindow : Window
     {
+        Player player = new Player();
+        Deck deck = new Deck(1);
+
         public MainWindow()
         {
             InitializeComponent();
-            Deck myDeck = new Deck(2);
-            myDeck.FillDeckWithCards();
-            myDeck.Shuffle();
-            foreach (var item in myDeck.MyDeck)
-            {
-                testBox.Items.Add(item);
-            }
-            testBox.Items.Add("Your card is" + myDeck.Draw());
+            deck.InitializeDeck();
+            deck.Shuffle();
+            
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            player.PlayerHand.AddCard();
+            player.PlayerHand.AddCard();
+            StartBtn.IsEnabled = false;
         }
     }
 }
