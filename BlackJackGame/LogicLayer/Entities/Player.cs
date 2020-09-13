@@ -6,7 +6,8 @@ namespace LogicLayer.Entities
 {
     public class Player
     {
-        private bool isFinished = false;
+
+        public Hand PlayerHand { get; set; }
 
         public bool IsFinished { get; set; }
 

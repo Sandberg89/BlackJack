@@ -37,12 +37,14 @@ namespace LogicLayer.Entities
             }
         }
 
-        //Draw a random card from the deck
+        //Draw a random card from the deck and also make sure to remove it from the deck
         public Card Draw()
         {
             Random randomCard = new Random();
             int index = randomCard.Next(myDeck.Count);
-            return myDeck[index];
+            Card drawnCard = myDeck[index];
+            myDeck.RemoveAt(index);
+            return drawnCard;
         }
 
     }
