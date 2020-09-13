@@ -11,7 +11,6 @@ namespace LogicLayer.Entities
 
         public bool IsFinished { get; set; }
 
-        public List<Card> playerCards { get; set; }
 
         public bool IsThick 
         { 

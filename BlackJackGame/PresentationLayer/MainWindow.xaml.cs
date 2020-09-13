@@ -25,6 +25,7 @@ namespace PresentationLayer
         {
             InitializeComponent();
             Deck myDeck = new Deck(2);
+            myDeck.FillDeckWithCards();
             myDeck.Shuffle();
             foreach (var item in myDeck.MyDeck)
             {

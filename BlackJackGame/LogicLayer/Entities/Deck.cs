@@ -1,5 +1,6 @@
 ﻿using LogicLayer.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace LogicLayer.Entities
         }
 
         //This method will create a deck with 52 cards times numberOfDecks 
-        public void Shuffle()
+        public void FillDeckWithCards()
         {
             //Create the deck 
             foreach (SuitType cardSuit in Enum.GetValues(typeof(SuitType)))
@@ -33,18 +34,21 @@ namespace LogicLayer.Entities
                         myDeck.Add(card);
                     }
                 }
-
             }
         }
 
-        //Draw a random card from the deck and also make sure to remove it from the deck
+        // Shuffle the card in the deck by using a random GUID
+        public void Shuffle()
+        {
+            myDeck = myDeck.OrderBy(i => Guid.NewGuid()).ToList();
+        }
+
+        //Draw the card on the top of the list. Since it's shuffled we will get a random card 
         public Card Draw()
         {
-            Random randomCard = new Random();
-            int index = randomCard.Next(myDeck.Count);
-            Card drawnCard = myDeck[index];
-            myDeck.RemoveAt(index);
-            return drawnCard;
+            Card topCardInDeck = myDeck[0];
+            myDeck.RemoveAt(0);
+            return topCardInDeck;
         }
 
     }
