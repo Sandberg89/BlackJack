@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.5,0.481">
-        <Button Content="Start Game" HorizontalAlignment="Left" Margin="381,381,0,0" VerticalAlignment="Top" Width="75" Name="StartBtn" Click="StartBtn_Click"/>
+        <Button Content="Start Game" HorizontalAlignment="Left" Margin="389,381,0,0" VerticalAlignment="Top" Width="75" Name="StartBtn" Click="StartBtn_Click"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="5,246,0,0" VerticalAlignment="Top" Width="61" Name="Player1Points"/>
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="71,246,0,0" VerticalAlignment="Top" Width="100" Name="PlayerCards"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,381,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Name="Players"/>
-        <Label Content="Amount of players:" HorizontalAlignment="Left" Margin="103,378,0,0" VerticalAlignment="Top"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="60,207,0,0" VerticalAlignment="Top" Width="100" Name="PlayerCards"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Players"/>
+        <Label Content="Amount of players:" HorizontalAlignment="Left" Margin="103,351,0,0" VerticalAlignment="Top"/>
+        <Label Content="Amount of Decks:" HorizontalAlignment="Left" Margin="103,381,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Decks"/>
 
     </Grid>
 </Window>

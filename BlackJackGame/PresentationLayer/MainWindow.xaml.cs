@@ -40,7 +40,12 @@ namespace PresentationLayer
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            game.AddPlayers(Int32.Parse(Players.Text));
+            if(Players.Text != null && Decks.Text != null)
+            {
+                game.AddPlayers(Int32.Parse(Players.Text));
+                game.CreateDeck(Int32.Parse(Decks.Text));
+            }
+            
 
 
 
@@ -50,6 +55,7 @@ namespace PresentationLayer
             //PlayerCards.Items.Add(player.PlayerHand.ToString());
             StartBtn.IsEnabled = false;
             Players.IsEnabled = false;
+            Decks.IsEnabled = false;
         }
 
 
