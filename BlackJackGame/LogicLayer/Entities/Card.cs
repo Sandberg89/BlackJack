@@ -7,13 +7,13 @@ namespace LogicLayer.Entities
 {
     public class Card
     {
-        public int CardValue { get; set; }
+        public CardValue CardValue { get; set; }
         public SuitType CardSuite { get; set; }
 
 
         public Card(int value, SuitType suit)
         {
-            this.CardValue = value;
+            this.CardValue = CardValue;
             this.CardSuite = suit;
         }
 

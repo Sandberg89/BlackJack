@@ -8,14 +8,10 @@ namespace LogicLayer.Entities
     {
         private List<Card> hand = new List<Card>();
         // Look into if there is a better way 
-        Deck newDeck;
         private Card _card;
 
         public Hand()
         {
-            this.newDeck = new Deck(1);
-            newDeck.InitializeDeck();
-            newDeck.Shuffle();
             this._card = new Card();
         }
 
@@ -36,7 +32,7 @@ namespace LogicLayer.Entities
                 int totalScore = 0;
                 foreach (Card card in hand)
                 {
-                    totalScore += card.CardValue;
+                    totalScore += (int)card.CardValue;
                 }
                 return totalScore;
             }
@@ -44,9 +40,9 @@ namespace LogicLayer.Entities
         /// <summary>
         /// Draw a new card to your hand
         /// </summary>
-        public void AddCard()
+        public void AddCard(Deck deck)
         {
-            hand.Add(newDeck.DrawNextCard());
+            hand.Add(deck.DrawNextCard());
         }
 
         /// <summary>
@@ -55,6 +51,23 @@ namespace LogicLayer.Entities
         public void ClearHand()
         {
             hand.Clear();
+        }
+
+        public override string ToString()
+        {
+            if (hand.Count > 0)
+            {
+                string cardsOnHand = "";
+                foreach (Card card in hand)
+                {
+                    cardsOnHand += card.ToString() + "\n";
+                }
+
+                return cardsOnHand;
+            }
+
+            return "No cards on hand";
+            
         }
     }
 }

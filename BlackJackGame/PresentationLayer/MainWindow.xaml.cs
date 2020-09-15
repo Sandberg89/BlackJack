@@ -23,6 +23,7 @@ namespace PresentationLayer
     {
         Player player = new Player();
         Deck deck = new Deck(1);
+        GameUtils game = new GameUtils();
 
         public MainWindow()
         {
@@ -39,9 +40,18 @@ namespace PresentationLayer
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            player.PlayerHand.AddCard();
-            player.PlayerHand.AddCard();
+            game.AddPlayers(Int32.Parse(Players.Text));
+
+
+
+            //player.PlayerHand.AddCard(deck);
+            //player.PlayerHand.AddCard(deck);
+            //Player1Points.Content = player.PlayerHand.Score;
+            //PlayerCards.Items.Add(player.PlayerHand.ToString());
             StartBtn.IsEnabled = false;
+            Players.IsEnabled = false;
         }
+
+
     }
 }
