@@ -11,6 +11,12 @@ namespace LogicLayer.Entities
     {
         List<Player> players = new List<Player>();
         Deck deck;
+        Player dealer;
+
+        public GameUtils()
+        {
+            dealer = new Player();
+        }
 
         /// <summary>
         /// Add the amount of players that is wanted
@@ -35,9 +41,9 @@ namespace LogicLayer.Entities
             deck.Shuffle();
         }
 
-        public void StartHand()
+        public void ReshuffleDeck()
         {
-
+            deck.Shuffle();
         }
     }
 }

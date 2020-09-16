@@ -29,9 +29,12 @@ namespace LogicLayer.Entities
             {
                 for (int i = 1; i <= NumberOfDecks; i++)
                 {
-                    for (int value = 2; value <= 14; value++)
+                    for (int value = 1; value <= 13; value++)
                     {
-                        Card card = new Card(value, cardSuit);
+                        CardValue cardVal= (CardValue)value;
+
+                        Card card = new Card(cardVal, cardSuit);
+
                         myDeck.Add(card);
                     }
                 }

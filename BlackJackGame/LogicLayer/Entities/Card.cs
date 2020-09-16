@@ -11,9 +11,9 @@ namespace LogicLayer.Entities
         public SuitType CardSuite { get; set; }
 
 
-        public Card(int value, SuitType suit)
+        public Card(CardValue value, SuitType suit)
         {
-            this.CardValue = CardValue;
+            this.CardValue = value;
             this.CardSuite = suit;
         }
 

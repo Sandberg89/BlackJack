@@ -1,4 +1,5 @@
 ﻿using LogicLayer.Entities;
+using LogicLayer.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace PresentationLayer
                 game.AddPlayers(Int32.Parse(Players.Text));
                 game.CreateDeck(Int32.Parse(Decks.Text));
             }
-            
+
 
 
 
@@ -53,6 +54,7 @@ namespace PresentationLayer
             //player.PlayerHand.AddCard(deck);
             //Player1Points.Content = player.PlayerHand.Score;
             //PlayerCards.Items.Add(player.PlayerHand.ToString());
+            
             StartBtn.IsEnabled = false;
             Players.IsEnabled = false;
             Decks.IsEnabled = false;
