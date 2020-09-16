@@ -58,6 +58,12 @@ namespace PresentationLayer
             StartBtn.IsEnabled = false;
             Players.IsEnabled = false;
             Decks.IsEnabled = false;
+
+            foreach (var player in game.Players)
+            {
+                PlayerWindow playerWindow = new PlayerWindow(player);
+                playerWindow.Show();
+            }
         }
 
 

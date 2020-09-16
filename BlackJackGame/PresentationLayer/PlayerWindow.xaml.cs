@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace PresentationLayer
     /// </summary>
     public partial class PlayerWindow : Window
     {
-        public PlayerWindow()
+        public PlayerWindow(Player player)
         {
             InitializeComponent();
         }

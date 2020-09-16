@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
-        Title="PlayerWindow" Height="450" Width="800">
-    <Grid>
+        Title="PlayerWindow" Height="450" Width="365.645">
+    <Grid Margin="0,0,118,0">
+        <Label Content="Current Score" HorizontalAlignment="Left" Margin="48,35,0,0" VerticalAlignment="Top"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="162,35,0,0" VerticalAlignment="Top" Width="70" Name="PlayerHandValue"/>
+        <Button Content="Hit me!" HorizontalAlignment="Left" Margin="48,88,0,0" VerticalAlignment="Top" Width="75" Name="PlayerDrawCard"/>
         
+
     </Grid>
 </Window>

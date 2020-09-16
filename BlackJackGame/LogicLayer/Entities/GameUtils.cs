@@ -13,6 +13,10 @@ namespace LogicLayer.Entities
         Deck deck;
         Player dealer;
 
+        public List<Player> Players {
+            get { return players; }
+        }
+
         public GameUtils()
         {
             dealer = new Player();
