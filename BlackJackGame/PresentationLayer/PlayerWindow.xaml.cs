@@ -20,9 +20,23 @@ namespace PresentationLayer
     /// </summary>
     public partial class PlayerWindow : Window
     {
+        Player localPlayer;
+
         public PlayerWindow(Player player)
         {
             InitializeComponent();
+            localPlayer = player;
+            PlayerHandValue.Content = localPlayer.PlayerHand.Score;
+            if (localPlayer.IsThick)
+            {
+                PlayerIsThick.Content = "Sorry your hand is too big";
+                PlayerDrawCard.IsEnabled = false;
+            }
+        }
+
+        private void PlayerDrawCard_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

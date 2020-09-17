@@ -45,25 +45,32 @@ namespace PresentationLayer
             {
                 game.AddPlayers(Int32.Parse(Players.Text));
                 game.CreateDeck(Int32.Parse(Decks.Text));
+                game.PlayerStartHand();
+                game.ArePlayersThick();
             }
 
-
-
-
-            //player.PlayerHand.AddCard(deck);
-            //player.PlayerHand.AddCard(deck);
-            //Player1Points.Content = player.PlayerHand.Score;
-            //PlayerCards.Items.Add(player.PlayerHand.ToString());
-            
-            StartBtn.IsEnabled = false;
-            Players.IsEnabled = false;
-            Decks.IsEnabled = false;
-
-            foreach (var player in game.Players)
+            if (game.Players.Count >= 1)
             {
-                PlayerWindow playerWindow = new PlayerWindow(player);
-                playerWindow.Show();
+                foreach (var player in game.Players)
+                {
+                    PlayerWindow playerWindow = new PlayerWindow(player);
+                    playerWindow.Show();
+                }
+
+                DealerScore.Content = game.Dealer.PlayerHand.Score;
+                DealerScore.IsEnabled = true;
+                StartBtn.IsEnabled = false;
+                Players.IsEnabled = false;
+                Decks.IsEnabled = false;
+
             }
+
+            else
+            {
+                MessageBox.Show("Must add at least one player!");
+            }
+
+
         }
 
 

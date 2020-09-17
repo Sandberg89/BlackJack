@@ -19,12 +19,8 @@ namespace LogicLayer.Entities
 
 
         public bool IsThick 
-        { 
-            get; 
-            set; 
+        {
+            get; set;
         }
-
-
-
     }
 }

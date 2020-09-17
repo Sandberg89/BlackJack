@@ -7,12 +7,11 @@ namespace LogicLayer.Entities
     public class Hand
     {
         private List<Card> hand = new List<Card>();
-        // Look into if there is a better way 
-        private Card _card;
+        // private Card _card;
 
         public Hand()
         {
-            this._card = new Card();
+            //this._card = new Card();
         }
 
         //return the amount of cards the player have 
@@ -23,8 +22,9 @@ namespace LogicLayer.Entities
                 return hand.Count;
             } 
         }
-
-        //retrieve total score of hand 
+        /// <summary>
+        /// retrieve total score of hand 
+        /// </summary>
         public int Score
         {
             get

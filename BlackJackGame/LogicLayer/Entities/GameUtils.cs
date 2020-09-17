@@ -17,6 +17,11 @@ namespace LogicLayer.Entities
             get { return players; }
         }
 
+        public Player Dealer
+        {
+            get { return dealer; }
+        }
+
         public GameUtils()
         {
             dealer = new Player();
@@ -45,9 +50,56 @@ namespace LogicLayer.Entities
             deck.Shuffle();
         }
 
+        /// <summary>
+        /// Method for reshuffling the deck
+        /// </summary>
         public void ReshuffleDeck()
         {
             deck.Shuffle();
+        }
+
+        /// <summary>
+        /// Give all the players and the dealer a starting hand 
+        /// </summary>
+        public void PlayerStartHand()
+        {
+            foreach(Player player in players)
+            {
+                player.PlayerHand.AddCard(deck);
+                player.PlayerHand.AddCard(deck);
+            }
+
+            dealer.PlayerHand.AddCard(deck);
+            dealer.PlayerHand.AddCard(deck);
+        }
+
+        public void ArePlayersThick()
+        {
+            foreach (var player in players)
+            {
+                if(player.PlayerHand.Score > 21)
+                {
+                    player.IsThick = true;
+                }
+                else
+                {
+                    player.IsThick = false;
+                }
+            }
+
+            if(dealer.PlayerHand.Score > 21)
+            {
+                dealer.IsThick = true;
+            }
+            else
+            {
+                dealer.IsThick = false;
+            }
+        }
+
+        public void PlayerDrawCard(Player player)
+        {
+            player.PlayerHand.AddCard(deck);
         }
     }
 }
