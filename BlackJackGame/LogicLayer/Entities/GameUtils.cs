@@ -75,7 +75,6 @@ namespace LogicLayer.Entities
             }
 
             dealer.PlayerHand.AddCard(deck);
-           // dealer.PlayerHand.AddCard(deck);
         }
 
         public void ArePlayersThick()
@@ -104,6 +103,10 @@ namespace LogicLayer.Entities
             }
         }
 
+        /// <summary>
+        /// Draw a card for player
+        /// </summary>
+        /// <param name="player"></param>
         public void PlayerDrawCard(Player player)
         {
             if(deck.MyDeck.Count > 1)
@@ -134,9 +137,36 @@ namespace LogicLayer.Entities
             return true;
         }
         
+        /// <summary>
+        /// Dealer draw a card
+        /// </summary>
         public void DealerDrawCard()
         {
             dealer.PlayerHand.AddCard(deck);
+        }
+
+        public string EvaluateWhoWon()
+        {
+            string winner = "";
+            int countWinners = 0;
+            foreach(var player in players)
+            {
+                if (!player.IsThick)
+                {
+                    if(player.PlayerHand.Score > dealer.PlayerHand.Score || dealer.IsThick)
+                    {
+                        winner += "Player " + player.PlayerId.ToString() + "\n";
+                        countWinners += 1;
+                    }
+                }
+            }
+
+            if(countWinners == 0)
+            {
+                winner += "Dealer won!";
+            }
+
+            return winner;
         }
 
         }

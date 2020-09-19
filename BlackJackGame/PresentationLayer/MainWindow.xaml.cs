@@ -106,6 +106,7 @@ namespace PresentationLayer
             if (game.AllPlayersDone())
             {
                 DealerDrawBtn.Visibility = Visibility.Visible;
+                DealerStayBtn.Visibility = Visibility.Visible;
                 UpDateDealerData();
             }
         }
@@ -114,13 +115,28 @@ namespace PresentationLayer
         {
             game.DealerDrawCard();
             UpDateDealerData();
+            game.ArePlayersThick();
+            if (game.Dealer.IsThick)
+            {
+                DealerDrawBtn.IsEnabled = false;
+                DealerInfoLabel.Content = "The dealer is thick!";
+            }
         }
 
+        /// <summary>
+        /// Method to update labels and buttons for the dealer
+        /// </summary>
         public void UpDateDealerData()
         {
             DealerCardsListBox.Items.Clear();
             DealerScore.Content = game.Dealer.PlayerHand.Score;
             DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
+        }
+
+        private void DealerStayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WinnerListBox.Visibility = Visibility.Visible;
+            WinnerListBox.Items.Add(game.EvaluateWhoWon());
         }
     }
 }
