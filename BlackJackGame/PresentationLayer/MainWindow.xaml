@@ -15,7 +15,7 @@
         <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="109,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
         <Label Content="" HorizontalAlignment="Left" Margin="199,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScore" IsEnabled="False"/>
         <Button Content="Shuffle" HorizontalAlignment="Center" Margin="707,390,0,0" VerticalAlignment="Top" Width="63" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>
-        <Button Content="Dealer draw" HorizontalAlignment="Left" Margin="315,171,0,0" VerticalAlignment="Top" Width="75" Name="DealerDrawBtn" Visibility="Hidden"/>
+        <Button Content="Dealer draw" HorizontalAlignment="Left" Margin="315,171,0,0" VerticalAlignment="Top" Width="75" Name="DealerDrawBtn" Click="DealerDrawBtn_Click" Visibility="Hidden"/>
         <ListBox HorizontalAlignment="Left" Height="100" Margin="113,206,0,0" VerticalAlignment="Top" Width="100" Name="DealerCardsListBox"/>
 
     </Grid>

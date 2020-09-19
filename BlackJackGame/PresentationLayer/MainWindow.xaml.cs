@@ -106,7 +106,15 @@ namespace PresentationLayer
             if (game.AllPlayersDone())
             {
                 DealerDrawBtn.Visibility = Visibility.Visible;
+                DealerCardsListBox.Items.Clear();
+                DealerScore.Content = game.Dealer.PlayerHand.Score;
+                DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
             }
+        }
+
+        private void DealerDrawBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

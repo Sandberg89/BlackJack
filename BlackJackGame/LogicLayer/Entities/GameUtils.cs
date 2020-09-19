@@ -75,7 +75,7 @@ namespace LogicLayer.Entities
             }
 
             dealer.PlayerHand.AddCard(deck);
-            dealer.PlayerHand.AddCard(deck);
+           // dealer.PlayerHand.AddCard(deck);
         }
 
         public void ArePlayersThick()
@@ -116,6 +116,10 @@ namespace LogicLayer.Entities
             }
         }
 
+        /// <summary>
+        /// Checks and controls if all the players have stayed and assigne a second card to dealer 
+        /// </summary>
+        /// <returns></returns>
         public bool AllPlayersDone()
         {
             foreach(var player in players)
@@ -126,6 +130,7 @@ namespace LogicLayer.Entities
                 }
             }
 
+            dealer.PlayerHand.AddCard(deck);
             return true;
         }
         

@@ -37,6 +37,9 @@ namespace PresentationLayer
             }
         }
 
+        /// <summary>
+        /// Event listners for the player
+        /// </summary>
         public event EventHandler<Player> hitEvent;
         public event EventHandler<Player> stayEvent;
 
