@@ -26,16 +26,19 @@ namespace PresentationLayer
         {
             InitializeComponent();
             localPlayer = player;
+            this.Title ="Player " + localPlayer.PlayerId.ToString();
             PlayerHandValue.Content = localPlayer.PlayerHand.Score;
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
             if (localPlayer.IsThick)
             {
                 PlayerIsThick.Content = "Sorry your hand is too big";
+                StayBtn.IsEnabled = false;
                 PlayerDrawCard.IsEnabled = false;
             }
         }
 
         public event EventHandler<Player> hitEvent;
+        public event EventHandler<Player> stayEvent;
 
         private void PlayerDrawCard_Click(object sender, RoutedEventArgs e)
         {
@@ -46,8 +49,17 @@ namespace PresentationLayer
             if (localPlayer.IsThick)
             {
                 PlayerDrawCard.IsEnabled = false;
-                PlayerIsThick.Content = "Sorry you are thick!";
+                OnStayEvent(localPlayer);
+                PlayerIsThick.Content = "Sorry you are thick! \n Good luck next round! ";
             }
+        }
+
+        private void StayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            localPlayer.IsFinished = true;
+            PlayerDrawCard.IsEnabled = false;
+            StayBtn.IsEnabled = false;
+            OnStayEvent(localPlayer);
         }
 
         public void OnHitEvent(Player e)
@@ -57,5 +69,15 @@ namespace PresentationLayer
                 hitEvent(this, e);
             }
         }
+
+        public void OnStayEvent(Player e)
+        {
+            if (stayEvent != null)
+            {
+                stayEvent(this, e);
+            }
+        }
+
+
     }
 }

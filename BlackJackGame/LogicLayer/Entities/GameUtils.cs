@@ -12,6 +12,7 @@ namespace LogicLayer.Entities
         List<Player> players = new List<Player>();
         Deck deck;
         Player dealer;
+        int blackJackScore = 21;
 
         public List<Player> Players {
             get { return players; }
@@ -22,9 +23,12 @@ namespace LogicLayer.Entities
             get { return dealer; }
         }
 
+        /// <summary>
+        /// Create a dealer that always have id of 0
+        /// </summary>
         public GameUtils()
         {
-            dealer = new Player();
+            dealer = new Player(0);
         }
 
         /// <summary>
@@ -35,7 +39,8 @@ namespace LogicLayer.Entities
         {
             for (int i = 0; i < amountOfPlayers; i++)
             {
-                players.Add(new Player());
+                players.Add(new Player(i + 1));
+
             }
         }
 
@@ -77,9 +82,10 @@ namespace LogicLayer.Entities
         {
             foreach (var player in players)
             {
-                if(player.PlayerHand.Score > 21)
+                if(player.PlayerHand.Score > blackJackScore)
                 {
                     player.IsThick = true;
+                    player.IsFinished = true;
                 }
                 else
                 {
@@ -87,9 +93,10 @@ namespace LogicLayer.Entities
                 }
             }
 
-            if(dealer.PlayerHand.Score > 21)
+            if(dealer.PlayerHand.Score > blackJackScore)
             {
                 dealer.IsThick = true;
+                dealer.IsFinished = true;
             }
             else
             {
@@ -99,7 +106,30 @@ namespace LogicLayer.Entities
 
         public void PlayerDrawCard(Player player)
         {
-            player.PlayerHand.AddCard(deck);
+            if(deck.MyDeck.Count > 1)
+            {
+                player.PlayerHand.AddCard(deck);
+            }
+            else
+            {
+                deck.InitializeDeck();
+            }
+        }
+
+        public bool AllPlayersDone()
+        {
+            foreach(var player in players)
+            {
+                if (!player.IsFinished)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
+
         }
     }
-}
+

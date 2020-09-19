@@ -18,7 +18,7 @@ namespace LogicLayer.Entities
         public Deck(int decks)
         {
             this.myDeck = new List<Card>();
-            this.NumberOfDecks = 1;
+            this.NumberOfDecks = decks;
         }
 
         //This method will create a deck with 52 cards times numberOfDecks 

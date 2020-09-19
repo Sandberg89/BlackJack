@@ -10,9 +10,15 @@ namespace LogicLayer.Entities
 
         public Player()
         {
-            this.hand = new Hand();
         }
 
+        public Player(int id)
+        {
+            this.hand = new Hand();
+            this.PlayerId = id;
+        }
+
+        public int PlayerId { get; set; }
 
         public Hand PlayerHand { get { return hand; } set { hand = value; } }
 

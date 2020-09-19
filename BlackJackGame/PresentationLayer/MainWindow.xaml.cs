@@ -26,7 +26,7 @@ namespace PresentationLayer
         Deck deck = new Deck(1);
         GameUtils game = new GameUtils();
 
-        public event EventHandler<Player> NewCard;
+        //public event EventHandler<Player> NewCard;
 
 
         public MainWindow()
@@ -55,9 +55,11 @@ namespace PresentationLayer
                     PlayerWindow playerWindow = new PlayerWindow(player);
                     playerWindow.Show();
                     playerWindow.hitEvent += OnHitEvent;
+                    playerWindow.stayEvent += OnStayEvent;
                 }
 
                 DealerScore.Content = game.Dealer.PlayerHand.Score;
+                DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
                 DealerScore.IsEnabled = true;
                 StartBtn.IsEnabled = false;
                 Players.IsEnabled = false;
@@ -73,6 +75,11 @@ namespace PresentationLayer
 
         }
 
+        /// <summary>
+        /// Shuffle the deck when user click on btn 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShuffleBtn_Click(object sender, RoutedEventArgs e)
         {
             game.ReshuffleDeck();
@@ -89,6 +96,17 @@ namespace PresentationLayer
             game.ArePlayersThick();
         }
 
-
+        /// <summary>
+        /// Check and see if all players are done 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnStayEvent(object sender, Player e)
+        {
+            if (game.AllPlayersDone())
+            {
+                DealerDrawBtn.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

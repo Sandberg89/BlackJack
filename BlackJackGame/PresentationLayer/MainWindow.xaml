@@ -12,9 +12,11 @@
         <Label Content="Amount of players:" HorizontalAlignment="Left" Margin="103,351,0,0" VerticalAlignment="Top"/>
         <Label Content="Amount of Decks:" HorizontalAlignment="Left" Margin="103,381,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Decks"/>
-        <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="128,202,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="218,202,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScore" IsEnabled="False"/>
+        <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="109,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="199,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScore" IsEnabled="False"/>
         <Button Content="Shuffle" HorizontalAlignment="Center" Margin="707,390,0,0" VerticalAlignment="Top" Width="63" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>
+        <Button Content="Dealer draw" HorizontalAlignment="Left" Margin="315,171,0,0" VerticalAlignment="Top" Width="75" Name="DealerDrawBtn" Visibility="Hidden"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="113,206,0,0" VerticalAlignment="Top" Width="100" Name="DealerCardsListBox"/>
 
     </Grid>
 </Window>
