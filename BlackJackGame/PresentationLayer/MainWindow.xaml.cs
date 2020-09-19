@@ -107,8 +107,13 @@ namespace PresentationLayer
         {
             if (game.AllPlayersDone())
             {
+
                 DealerDrawBtn.Visibility = Visibility.Visible;
                 DealerStayBtn.Visibility = Visibility.Visible;
+                DealerDrawBtn.IsEnabled = true;
+                DealerStayBtn.IsEnabled = true;
+                game.ArePlayersThick();
+                game.IsDealerThick();
                 UpDateDealerData();
             }
         }
@@ -116,13 +121,9 @@ namespace PresentationLayer
         private void DealerDrawBtn_Click(object sender, RoutedEventArgs e)
         {
             game.DealerDrawCard();
+            game.IsDealerThick();
             UpDateDealerData();
-            game.ArePlayersThick();
-            if (game.Dealer.IsThick)
-            {
-                DealerDrawBtn.IsEnabled = false;
-                DealerInfoLabel.Content = "The dealer is thick!";
-            }
+            
         }
 
         /// <summary>
@@ -133,6 +134,16 @@ namespace PresentationLayer
             DealerCardsListBox.Items.Clear();
             DealerScoreLabel.Content = game.Dealer.PlayerHand.Score;
             DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
+            if (game.Dealer.IsThick)
+            {
+                DealerDrawBtn.IsEnabled = false;
+                DealerInfoLabel.Content = "The dealer is thick!";
+            }
+            else
+            {
+                DealerInfoLabel.Content = "";
+            }
+
         }
 
         private void DealerStayBtn_Click(object sender, RoutedEventArgs e)
@@ -140,6 +151,8 @@ namespace PresentationLayer
             WinnerListBox.Visibility = Visibility.Visible;
             WinLabel.Visibility = Visibility.Visible;
             WinnerListBox.Items.Add(game.EvaluateWhoWon());
+            DealerDrawBtn.IsEnabled = false;
+            DealerStayBtn.IsEnabled = false;
         }
 
         private void NewRoundBtn_Click(object sender, RoutedEventArgs e)
@@ -150,16 +163,19 @@ namespace PresentationLayer
             game.ResetRound();
             if (game.DeckLessThanOneFourth())
             {
-                MessageBoxResult result = MessageBox.Show("Would you like to greet the world with a \"Hello, world\"?", "Shuffle cards", MessageBoxButton.YesNoCancel);
+                MessageBoxResult result = MessageBox.Show("Do you want to shuffle the cards?", "Shuffle cards", MessageBoxButton.YesNoCancel);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                        deck.InitializeDeck();
+                        game.CreateDeck(Int32.Parse(Decks.Text));
                         break;
                 }
             }
             game.PlayerStartHand();
+            game.ArePlayersThick();
             StartNewRound();
+
+
         }
             public void ResetUiComponents()
             {

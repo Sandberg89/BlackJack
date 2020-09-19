@@ -91,8 +91,11 @@ namespace LogicLayer.Entities
                     player.IsThick = false;
                 }
             }
+        }
 
-            if(dealer.PlayerHand.Score > blackJackScore)
+        public void IsDealerThick()
+        {
+            if (dealer.PlayerHand.Score > blackJackScore)
             {
                 dealer.IsThick = true;
                 dealer.IsFinished = true;

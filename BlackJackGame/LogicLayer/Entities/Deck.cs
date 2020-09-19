@@ -24,7 +24,7 @@ namespace LogicLayer.Entities
         //This method will create a deck with 52 cards times numberOfDecks 
         public void InitializeDeck()
         {
-            //Create the deck 
+            
             foreach (SuitType cardSuit in Enum.GetValues(typeof(SuitType)))
             {
                 for (int i = 1; i <= NumberOfDecks; i++)
