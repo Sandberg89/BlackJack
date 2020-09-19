@@ -25,7 +25,7 @@ namespace PresentationLayer
         Player player = new Player();
         Deck deck = new Deck(1);
         GameUtils game = new GameUtils();
-
+        PlayerWindow playerWindow;
         //public event EventHandler<Player> NewCard;
 
 
@@ -52,7 +52,7 @@ namespace PresentationLayer
             {
                 foreach (var player in game.Players)
                 {
-                    PlayerWindow playerWindow = new PlayerWindow(player);
+                    playerWindow = new PlayerWindow(player);
                     playerWindow.Show();
                     playerWindow.hitEvent += OnHitEvent;
                     playerWindow.stayEvent += OnStayEvent;
@@ -136,7 +136,14 @@ namespace PresentationLayer
         private void DealerStayBtn_Click(object sender, RoutedEventArgs e)
         {
             WinnerListBox.Visibility = Visibility.Visible;
+            WinLabel.Visibility = Visibility.Visible;
             WinnerListBox.Items.Add(game.EvaluateWhoWon());
+        }
+
+        private void NewRoundBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Check cards in deck 
+            playerWindow.Close();
         }
     }
 }

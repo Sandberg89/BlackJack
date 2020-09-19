@@ -142,9 +142,13 @@ namespace LogicLayer.Entities
         /// </summary>
         public void DealerDrawCard()
         {
-            dealer.PlayerHand.AddCard(deck);
+            PlayerDrawCard(dealer);
         }
 
+        /// <summary>
+        /// Check who have won this round
+        /// </summary>
+        /// <returns></returns>
         public string EvaluateWhoWon()
         {
             string winner = "";
@@ -169,6 +173,17 @@ namespace LogicLayer.Entities
             return winner;
         }
 
+        /// <summary>
+        /// Clear dealer and player hands 
+        /// </summary>
+        public void ResetRound()
+        {
+            dealer.PlayerHand.ClearHand();
+            foreach(var player in players)
+            {
+                player.PlayerHand.ClearHand();
+            }
+        }
         }
     }
 
