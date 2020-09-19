@@ -7,7 +7,7 @@ namespace LogicLayer.Entities
     /// <summary>
     /// Main focus of this class is to start the game off 
     /// </summary>
-    public class GameUtils
+    public class GameUtils : EventArgs
     {
         List<Player> players = new List<Player>();
         Deck deck;

@@ -9,8 +9,9 @@
     <Grid Margin="0,0,2,0">
         <Label Content="Current Score" HorizontalAlignment="Left" Margin="48,35,0,0" VerticalAlignment="Top"/>
         <Label Content="" HorizontalAlignment="Left" Margin="162,35,0,0" VerticalAlignment="Top" Width="70" Name="PlayerHandValue"/>
-        <Button Content="Hit me!" HorizontalAlignment="Left" Margin="48,88,0,0" VerticalAlignment="Top" Width="75" Name="PlayerDrawCard" Click="PlayerDrawCard_Click"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="162,82,0,0" VerticalAlignment="Top" Width="70" Name="PlayerIsThick"/>
+        <Button Content="Hit me!" HorizontalAlignment="Left" Margin="52,177,0,0" VerticalAlignment="Top" Width="75" Name="PlayerDrawCard" Click="PlayerDrawCard_Click"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="166,173,0,0" VerticalAlignment="Top" Width="70" Name="PlayerIsThick"/>
+        <ListBox HorizontalAlignment="Left" Height="100" Margin="62,61,0,0" VerticalAlignment="Top" Width="170" Name="PlayerHandListBox"/>
 
 
     </Grid>

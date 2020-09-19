@@ -26,6 +26,9 @@ namespace PresentationLayer
         Deck deck = new Deck(1);
         GameUtils game = new GameUtils();
 
+        public event EventHandler<Player> NewCard;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +50,7 @@ namespace PresentationLayer
                 game.CreateDeck(Int32.Parse(Decks.Text));
                 game.PlayerStartHand();
                 game.ArePlayersThick();
+                
             }
 
             if (game.Players.Count >= 1)
@@ -55,6 +59,7 @@ namespace PresentationLayer
                 {
                     PlayerWindow playerWindow = new PlayerWindow(player);
                     playerWindow.Show();
+                    playerWindow.hitEvent += OnHitEvent;
                 }
 
                 DealerScore.Content = game.Dealer.PlayerHand.Score;
@@ -73,6 +78,9 @@ namespace PresentationLayer
 
         }
 
-
+        public void OnHitEvent(object sender, Player e)
+        {
+            game.PlayerDrawCard(e);
+        }
     }
 }

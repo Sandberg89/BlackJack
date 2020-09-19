@@ -27,6 +27,7 @@ namespace PresentationLayer
             InitializeComponent();
             localPlayer = player;
             PlayerHandValue.Content = localPlayer.PlayerHand.Score;
+            PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
             if (localPlayer.IsThick)
             {
                 PlayerIsThick.Content = "Sorry your hand is too big";
@@ -34,9 +35,22 @@ namespace PresentationLayer
             }
         }
 
+        public event EventHandler<Player> hitEvent;
+
         private void PlayerDrawCard_Click(object sender, RoutedEventArgs e)
         {
-            
+            OnHitEvent(localPlayer);
+            PlayerHandListBox.Items.Clear();
+            PlayerHandValue.Content = localPlayer.PlayerHand.Score;
+            PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
+        }
+
+        public void OnHitEvent(Player e)
+        {
+            if (hitEvent != null)
+            {
+                hitEvent(this, e);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LogicLayer.Entities
 {
-    public class Player
+    public class Player : EventArgs
     {
         private Hand hand;
 
