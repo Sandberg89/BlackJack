@@ -14,7 +14,7 @@
         <Label Content="Current Score" HorizontalAlignment="Left" Margin="48,35,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label Content="" HorizontalAlignment="Left" Margin="61,35,0,0" VerticalAlignment="Top" Width="70" Name="PlayerHandValue" Grid.Column="1"/>
         <Button Content="Hit me!" HorizontalAlignment="Left" Margin="52,177,0,0" VerticalAlignment="Top" Width="75" Name="PlayerDrawCard" Click="PlayerDrawCard_Click" Grid.ColumnSpan="2"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="65,173,0,0" VerticalAlignment="Top" Width="115" Name="PlayerIsThick" Grid.Column="1"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="48,261,0,0" VerticalAlignment="Top" Width="184" Name="PlayerIsThick" Grid.ColumnSpan="2"/>
         <ListBox HorizontalAlignment="Left" Height="100" Margin="62,61,0,0" VerticalAlignment="Top" Width="170" Name="PlayerHandListBox" Grid.ColumnSpan="2"/>
         <Button Content="Stay" HorizontalAlignment="Left" Margin="52,215,0,0" VerticalAlignment="Top" Width="75" Name="StayBtn" Click="StayBtn_Click" Grid.ColumnSpan="2"/>
 

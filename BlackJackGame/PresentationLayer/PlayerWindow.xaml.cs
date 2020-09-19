@@ -20,7 +20,13 @@ namespace PresentationLayer
     /// </summary>
     public partial class PlayerWindow : Window
     {
+        /// <summary>
+        /// Event listners for the player
+        /// </summary>
         Player localPlayer;
+        public event EventHandler<Player> hitEvent;
+        public event EventHandler<Player> stayEvent;
+        
 
         public PlayerWindow(Player player)
         {
@@ -29,20 +35,11 @@ namespace PresentationLayer
             this.Title ="Player " + localPlayer.PlayerId.ToString();
             PlayerHandValue.Content = localPlayer.PlayerHand.Score;
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
-            if (localPlayer.IsThick)
-            {
-                OnStayEvent(localPlayer);
-                PlayerIsThick.Content = "Sorry your hand is too big";
-                StayBtn.IsEnabled = false;
-                PlayerDrawCard.IsEnabled = false;
-            }
+            CheckPlayer();
         }
 
-        /// <summary>
-        /// Event listners for the player
-        /// </summary>
-        public event EventHandler<Player> hitEvent;
-        public event EventHandler<Player> stayEvent;
+
+
 
         private void PlayerDrawCard_Click(object sender, RoutedEventArgs e)
         {
@@ -50,9 +47,15 @@ namespace PresentationLayer
             PlayerHandListBox.Items.Clear();
             PlayerHandValue.Content = localPlayer.PlayerHand.Score;
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
+            CheckPlayer();
+        }
+
+        private void CheckPlayer()
+        {
             if (localPlayer.IsThick)
             {
                 PlayerDrawCard.IsEnabled = false;
+               // StayBtn.IsEnabled = false;
                 OnStayEvent(localPlayer);
                 PlayerIsThick.Content = "Sorry you are thick! \n Good luck next round! ";
             }

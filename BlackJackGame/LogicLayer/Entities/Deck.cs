@@ -41,6 +41,11 @@ namespace LogicLayer.Entities
             }
         }
 
+        public int CardsLeftInDeck()
+        {
+            return MyDeck.Count;
+        }
+
         // Shuffle the card in the deck by using a random GUID
         public void Shuffle()
         {

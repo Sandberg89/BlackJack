@@ -179,9 +179,30 @@ namespace LogicLayer.Entities
         public void ResetRound()
         {
             dealer.PlayerHand.ClearHand();
+            dealer.IsThick = false;
+            dealer.IsFinished = false;
             foreach(var player in players)
             {
                 player.PlayerHand.ClearHand();
+                player.IsThick = false;
+                player.IsFinished = false;
+            }
+        }
+
+        /// <summary>
+        /// Check how many cards are left
+        /// </summary>
+        /// <returns></returns>
+        public bool DeckLessThanOneFourth()
+        {
+            int cardsleft = deck.CardsLeftInDeck();
+            if(cardsleft < (52 * deck.NumberOfDecks / 4))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         }

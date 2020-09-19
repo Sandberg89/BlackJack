@@ -26,7 +26,6 @@ namespace PresentationLayer
         Deck deck = new Deck(1);
         GameUtils game = new GameUtils();
         PlayerWindow playerWindow;
-        //public event EventHandler<Player> NewCard;
 
 
         public MainWindow()
@@ -34,33 +33,38 @@ namespace PresentationLayer
             InitializeComponent();
             deck.InitializeDeck();
             deck.Shuffle();
-            
+
         }
 
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(Players.Text != null && Decks.Text != null)
+            if (Players.Text != null && Decks.Text != null)
             {
                 game.AddPlayers(Int32.Parse(Players.Text));
                 game.CreateDeck(Int32.Parse(Decks.Text));
                 game.PlayerStartHand();
                 game.ArePlayersThick();
-                
+                StartNewRound();
             }
+
+        }
+
+        private void StartNewRound()
+        {
 
             if (game.Players.Count >= 1)
             {
                 foreach (var player in game.Players)
                 {
                     playerWindow = new PlayerWindow(player);
-                    playerWindow.Show();
                     playerWindow.hitEvent += OnHitEvent;
                     playerWindow.stayEvent += OnStayEvent;
+                    playerWindow.Show();
                 }
 
-                DealerScore.Content = game.Dealer.PlayerHand.Score;
+                DealerScoreLabel.Content = game.Dealer.PlayerHand.Score;
                 DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
-                DealerScore.IsEnabled = true;
+                DealerScoreLabel.IsEnabled = true;
                 StartBtn.IsEnabled = false;
                 Players.IsEnabled = false;
                 Decks.IsEnabled = false;
@@ -71,8 +75,6 @@ namespace PresentationLayer
             {
                 MessageBox.Show("Must add at least one player!");
             }
-
-
         }
 
         /// <summary>
@@ -129,7 +131,7 @@ namespace PresentationLayer
         public void UpDateDealerData()
         {
             DealerCardsListBox.Items.Clear();
-            DealerScore.Content = game.Dealer.PlayerHand.Score;
+            DealerScoreLabel.Content = game.Dealer.PlayerHand.Score;
             DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
         }
 
@@ -142,8 +144,37 @@ namespace PresentationLayer
 
         private void NewRoundBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Check cards in deck 
-            playerWindow.Close();
+            // Check cards in deck
+            CloseAllWindows();
+            ResetUiComponents();
+            game.ResetRound();
+            if (game.DeckLessThanOneFourth())
+            {
+                MessageBoxResult result = MessageBox.Show("Would you like to greet the world with a \"Hello, world\"?", "Shuffle cards", MessageBoxButton.YesNoCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        deck.InitializeDeck();
+                        break;
+                }
+            }
+            game.PlayerStartHand();
+            StartNewRound();
+        }
+            public void ResetUiComponents()
+            {
+                DealerCardsListBox.Items.Clear();
+                WinnerListBox.Items.Clear();
+            }
+
+            /// <summary>
+            /// Method to class all open windows 
+            /// </summary>
+            private void CloseAllWindows()
+            {
+                for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
+                    App.Current.Windows[intCounter].Close();
+            }
         }
     }
-}
+
