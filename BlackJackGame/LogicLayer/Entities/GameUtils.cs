@@ -134,6 +134,10 @@ namespace LogicLayer.Entities
             return true;
         }
         
+        public void DealerDrawCard()
+        {
+            dealer.PlayerHand.AddCard(deck);
+        }
 
         }
     }

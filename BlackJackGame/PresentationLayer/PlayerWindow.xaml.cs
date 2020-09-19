@@ -31,6 +31,7 @@ namespace PresentationLayer
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
             if (localPlayer.IsThick)
             {
+                OnStayEvent(localPlayer);
                 PlayerIsThick.Content = "Sorry your hand is too big";
                 StayBtn.IsEnabled = false;
                 PlayerDrawCard.IsEnabled = false;
