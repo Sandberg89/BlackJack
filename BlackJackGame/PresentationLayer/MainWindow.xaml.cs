@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace PresentationLayer
 {
@@ -177,20 +178,27 @@ namespace PresentationLayer
 
 
         }
-            public void ResetUiComponents()
-            {
-                DealerCardsListBox.Items.Clear();
-                WinnerListBox.Items.Clear();
-            }
-
-            /// <summary>
-            /// Method to class all open windows 
-            /// </summary>
-            private void CloseAllWindows()
-            {
-                for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
-                    App.Current.Windows[intCounter].Close();
-            }
+        public void ResetUiComponents()
+        {
+            DealerCardsListBox.Items.Clear();
+            WinnerListBox.Items.Clear();
         }
+
+        /// <summary>
+        /// Method to class all open windows 
+        /// </summary>
+        private void CloseAllWindows()
+        {
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter > 0; intCounter--)
+                App.Current.Windows[intCounter].Close();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+    }
     }
 
