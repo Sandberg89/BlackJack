@@ -14,6 +14,7 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Decks"/>
         <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="128,202,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
         <Label Content="" HorizontalAlignment="Left" Margin="218,202,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScore" IsEnabled="False"/>
-        
+        <Button Content="Shuffle" HorizontalAlignment="Center" Margin="707,390,0,0" VerticalAlignment="Top" Width="63" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>
+
     </Grid>
 </Window>

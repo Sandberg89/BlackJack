@@ -37,11 +37,6 @@ namespace PresentationLayer
             
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
             if(Players.Text != null && Decks.Text != null)
@@ -67,7 +62,7 @@ namespace PresentationLayer
                 StartBtn.IsEnabled = false;
                 Players.IsEnabled = false;
                 Decks.IsEnabled = false;
-
+                ShuffleBtn.IsEnabled = true;
             }
 
             else
@@ -78,9 +73,22 @@ namespace PresentationLayer
 
         }
 
+        private void ShuffleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            game.ReshuffleDeck();
+        }
+
+        /// <summary>
+        /// Draw a new card and check if the player is thick 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnHitEvent(object sender, Player e)
         {
             game.PlayerDrawCard(e);
+            game.ArePlayersThick();
         }
+
+
     }
 }

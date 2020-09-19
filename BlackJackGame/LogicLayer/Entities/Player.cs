@@ -13,6 +13,7 @@ namespace LogicLayer.Entities
             this.hand = new Hand();
         }
 
+
         public Hand PlayerHand { get { return hand; } set { hand = value; } }
 
         public bool IsFinished { get; set; }

@@ -43,6 +43,11 @@ namespace PresentationLayer
             PlayerHandListBox.Items.Clear();
             PlayerHandValue.Content = localPlayer.PlayerHand.Score;
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
+            if (localPlayer.IsThick)
+            {
+                PlayerDrawCard.IsEnabled = false;
+                PlayerIsThick.Content = "Sorry you are thick!";
+            }
         }
 
         public void OnHitEvent(Player e)
