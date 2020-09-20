@@ -1,4 +1,5 @@
-﻿using LogicLayer.Entities;
+﻿// Name: Linus Sandberg. Date: 2020-09-20. Project: Black Jack Game Assignment 1
+using LogicLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,10 @@ namespace PresentationLayer
         public event EventHandler<Player> hitEvent;
         public event EventHandler<Player> stayEvent;
         
-
+        /// <summary>
+        /// Initiate a new window
+        /// </summary>
+        /// <param name="player"></param>
         public PlayerWindow(Player player)
         {
             InitializeComponent();
@@ -37,10 +41,12 @@ namespace PresentationLayer
             PlayerHandListBox.Items.Add(localPlayer.PlayerHand.ToString());
             CheckPlayer();
         }
-
-
-
-
+        
+        /// <summary>
+        /// Method for when player draw a card also update UI components
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlayerDrawCard_Click(object sender, RoutedEventArgs e)
         {
             OnHitEvent(localPlayer);
@@ -50,6 +56,9 @@ namespace PresentationLayer
             CheckPlayer();
         }
 
+        /// <summary>
+        /// Check if the player is Thick and update the UI if that is the case
+        /// </summary>
         private void CheckPlayer()
         {
             if (localPlayer.IsThick)
@@ -61,6 +70,11 @@ namespace PresentationLayer
             }
         }
 
+        /// <summary>
+        /// Button click for when the player is Done
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StayBtn_Click(object sender, RoutedEventArgs e)
         {
             localPlayer.IsFinished = true;
@@ -69,6 +83,10 @@ namespace PresentationLayer
             OnStayEvent(localPlayer);
         }
 
+        /// <summary>
+        /// Send event when the player draw a card
+        /// </summary>
+        /// <param name="e"></param>
         public void OnHitEvent(Player e)
         {
             if (hitEvent != null)
@@ -77,6 +95,10 @@ namespace PresentationLayer
             }
         }
 
+        /// <summary>
+        /// Send event when the player stays
+        /// </summary>
+        /// <param name="e"></param>
         public void OnStayEvent(Player e)
         {
             if (stayEvent != null)

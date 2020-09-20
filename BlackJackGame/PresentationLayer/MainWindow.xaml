@@ -8,10 +8,10 @@
         Title="MainWindow" Height="474.586" Width="762.748">
     <Grid RenderTransformOrigin="0.5,0.481" Margin="0,0,-61,-2">
         <Button Content="Start Game" HorizontalAlignment="Left" Margin="389,381,0,0" VerticalAlignment="Top" Width="75" Name="StartBtn" Click="StartBtn_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Players" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="PlayersTextbox" PreviewTextInput="NumberValidationTextBox"/>
         <Label Content="Amount of players:" HorizontalAlignment="Left" Margin="103,351,0,0" VerticalAlignment="Top"/>
         <Label Content="Amount of Decks:" HorizontalAlignment="Left" Margin="103,381,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="Decks" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="DecksTextBox" PreviewTextInput="NumberValidationTextBox"/>
         <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="109,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" IsEnabled="False"/>
         <Label Content="" HorizontalAlignment="Left" Margin="199,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
         <Button Content="Shuffle" HorizontalAlignment="Center" Margin="540,376,191,0" VerticalAlignment="Top" Width="64" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>

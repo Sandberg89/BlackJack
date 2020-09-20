@@ -1,4 +1,5 @@
-﻿using LogicLayer.Entities;
+﻿// Name: Linus Sandberg. Date: 2020-09-20. Project: Black Jack Game Assignment 1
+using LogicLayer.Entities;
 using LogicLayer.Enums;
 using System;
 using System.Collections.Generic;
@@ -44,10 +45,10 @@ namespace PresentationLayer
         /// <param name="e"></param>
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Players.Text != null && Decks.Text != null && int.Parse(Players.Text) >= 1 && int.Parse(Decks.Text) >= 1 )
+            if (PlayersTextbox.Text != null && DecksTextBox.Text != null && int.Parse(PlayersTextbox.Text) >= 1 && int.Parse(DecksTextBox.Text) >= 1 )
             {
-                game.AddPlayers(Int32.Parse(Players.Text));
-                game.CreateDeck(Int32.Parse(Decks.Text));
+                game.AddPlayers(Int32.Parse(PlayersTextbox.Text));
+                game.CreateDeck(Int32.Parse(DecksTextBox.Text));
                 game.PlayerStartHand();
                 game.ArePlayersThick();
                 StartNewRound();
@@ -59,7 +60,9 @@ namespace PresentationLayer
 
         }
 
-
+        /// <summary>
+        /// Methods that initiate new players and handle UI components
+        /// </summary>
         private void StartNewRound()
         {
              foreach (var player in game.Players)
@@ -74,8 +77,8 @@ namespace PresentationLayer
              DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
              DealerScoreLabel.IsEnabled = true;
              StartBtn.IsEnabled = false;
-             Players.IsEnabled = false;
-             Decks.IsEnabled = false;
+             PlayersTextbox.IsEnabled = false;
+             DecksTextBox.IsEnabled = false;
              ShuffleBtn.IsEnabled = true;
         }
 
@@ -90,7 +93,7 @@ namespace PresentationLayer
         }
 
         /// <summary>
-        /// Draw a new card and check if the player is thick 
+        /// Event for when a player draw a new card 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -101,7 +104,7 @@ namespace PresentationLayer
         }
 
         /// <summary>
-        /// Check and see if all players are done 
+        /// Event that checks if all the players have stayed 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -120,6 +123,11 @@ namespace PresentationLayer
             }
         }
 
+        /// <summary>
+        /// Dealer draw button that draw a card and check if dealer is Thick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DealerDrawBtn_Click(object sender, RoutedEventArgs e)
         {
             game.DealerDrawCard();
@@ -148,6 +156,11 @@ namespace PresentationLayer
 
         }
 
+        /// <summary>
+        /// Button click event for when the dealer stay 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DealerStayBtn_Click(object sender, RoutedEventArgs e)
         {
             WinnerListBox.Visibility = Visibility.Visible;
@@ -157,9 +170,13 @@ namespace PresentationLayer
             DealerStayBtn.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Button that initiate a new round
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewRoundBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Check cards in deck
             CloseAllWindows();
             ResetUiComponents();
             game.ResetRound();
@@ -169,7 +186,7 @@ namespace PresentationLayer
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
-                        game.CreateDeck(Int32.Parse(Decks.Text));
+                        game.CreateDeck(Int32.Parse(DecksTextBox.Text));
                         break;
                 }
             }
@@ -179,6 +196,10 @@ namespace PresentationLayer
 
 
         }
+
+        /// <summary>
+        /// Method for resetting some UI components
+        /// </summary>
         public void ResetUiComponents()
         {
             DealerCardsListBox.Items.Clear();
@@ -194,6 +215,11 @@ namespace PresentationLayer
                 App.Current.Windows[intCounter].Close();
         }
 
+        /// <summary>
+        /// Method that validate input for Textbox player and deck
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

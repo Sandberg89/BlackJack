@@ -1,4 +1,5 @@
-﻿using LogicLayer.Enums;
+﻿// Name: Linus Sandberg. Date: 2020-09-20. Project: Black Jack Game Assignment 1
+using LogicLayer.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
