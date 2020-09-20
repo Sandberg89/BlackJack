@@ -45,7 +45,7 @@ namespace PresentationLayer
         /// <param name="e"></param>
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (PlayersTextbox.Text != null && DecksTextBox.Text != null && int.Parse(PlayersTextbox.Text) >= 1 && int.Parse(DecksTextBox.Text) >= 1 )
+            if (PlayersTextbox.Text != "" && DecksTextBox.Text != "" && int.Parse(PlayersTextbox.Text) >= 1 && int.Parse(DecksTextBox.Text) >= 1 )
             {
                 game.AddPlayers(Int32.Parse(PlayersTextbox.Text));
                 game.CreateDeck(Int32.Parse(DecksTextBox.Text));
