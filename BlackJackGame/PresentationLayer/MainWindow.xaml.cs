@@ -80,6 +80,7 @@ namespace PresentationLayer
              PlayersTextbox.IsEnabled = false;
              DecksTextBox.IsEnabled = false;
              ShuffleBtn.IsEnabled = true;
+             NewRoundBtn.Visibility = Visibility.Visible;
         }
 
         /// <summary>

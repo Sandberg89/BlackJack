@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="474.586" Width="762.748">
+        Title="Black Jack Game" Height="474.586" Width="762.748">
     <Grid RenderTransformOrigin="0.5,0.481" Margin="0,0,-61,-2">
         <Button Content="Start Game" HorizontalAlignment="Left" Margin="389,381,0,0" VerticalAlignment="Top" Width="75" Name="StartBtn" Click="StartBtn_Click"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="227,354,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="PlayersTextbox" PreviewTextInput="NumberValidationTextBox"/>
@@ -14,15 +14,17 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="227,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="DecksTextBox" PreviewTextInput="NumberValidationTextBox"/>
         <Label Content="Dealer Score: " HorizontalAlignment="Left" Margin="109,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" IsEnabled="False"/>
         <Label Content="" HorizontalAlignment="Left" Margin="199,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.212,-0.234" Width="85" Name="DealerScoreLabel" IsEnabled="False"/>
-        <Button Content="Shuffle" HorizontalAlignment="Center" Margin="540,376,191,0" VerticalAlignment="Top" Width="64" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>
+        <!--<Button Content="Shuffle" HorizontalAlignment="Center" Margin="536,367,214,0" VerticalAlignment="Top" Width="66" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>-->
+        <Button Content="Shuffle" HorizontalAlignment="Left" Margin="536,381,0,0" VerticalAlignment="Top" Width="75" Name="ShuffleBtn" Click="ShuffleBtn_Click" IsEnabled="False"/>
         <Button Content="Dealer draw" HorizontalAlignment="Left" Margin="284,169,0,0" VerticalAlignment="Top" Width="75" Name="DealerDrawBtn" Click="DealerDrawBtn_Click" Visibility="Hidden"/>
         <ListBox HorizontalAlignment="Left" Height="100" Margin="113,206,0,0" VerticalAlignment="Top" Width="100" Name="DealerCardsListBox"/>
         <Label Content="" HorizontalAlignment="Left" Margin="302,206,0,0" VerticalAlignment="Top" Name="DealerInfoLabel"/>
         <Button Content="Dealer stay" HorizontalAlignment="Left" Margin="396,169,0,0" VerticalAlignment="Top" Width="75" Name="DealerStayBtn" Click="DealerStayBtn_Click" Visibility="Hidden"/>
         <ListBox HorizontalAlignment="Left" Height="100" Margin="522,209,0,0" VerticalAlignment="Top" Width="100" x:Name="WinnerListBox" />
         <Label Content="Round won by:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="522,168,0,0" Width="100" Visibility="Visible" Name="WinLabel"/>
-        <Button Content="New round" HorizontalAlignment="Left" Margin="536,329,0,0" VerticalAlignment="Top" Width="75" Name="NewRoundBtn" Click="NewRoundBtn_Click"/>
+        <Button Content="New round" HorizontalAlignment="Left" Margin="536,329,0,0" VerticalAlignment="Top" Width="75" Name="NewRoundBtn" Click="NewRoundBtn_Click" Visibility="Hidden"/>
         <Label Content="Try your luck in Black Jack! " HorizontalAlignment="Left" Margin="113,70,0,0" VerticalAlignment="Top" Width="389" FontWeight="Bold" FontSize="24"/>
+        
 
     </Grid>
 </Window>
