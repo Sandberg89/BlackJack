@@ -28,18 +28,23 @@ namespace PresentationLayer
         GameUtils game = new GameUtils();
         PlayerWindow playerWindow;
 
-
+        /// <summary>
+        /// Initiailize a new window
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
-            deck.InitializeDeck();
-            deck.Shuffle();
 
         }
 
+        /// <summary>
+        /// Set values and start a game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Players.Text != null && Decks.Text != null)
+            if (Players.Text != null && Decks.Text != null && int.Parse(Players.Text) >= 1 && int.Parse(Decks.Text) >= 1 )
             {
                 game.AddPlayers(Int32.Parse(Players.Text));
                 game.CreateDeck(Int32.Parse(Decks.Text));
@@ -47,35 +52,31 @@ namespace PresentationLayer
                 game.ArePlayersThick();
                 StartNewRound();
             }
+            else
+            {
+                MessageBox.Show("Must add at least one player and one deck!");
+            }
 
         }
 
+
         private void StartNewRound()
         {
+             foreach (var player in game.Players)
+             {
+                 playerWindow = new PlayerWindow(player);
+                 playerWindow.hitEvent += OnHitEvent;
+                 playerWindow.stayEvent += OnStayEvent;
+                 playerWindow.Show();
+             }
 
-            if (game.Players.Count >= 1)
-            {
-                foreach (var player in game.Players)
-                {
-                    playerWindow = new PlayerWindow(player);
-                    playerWindow.hitEvent += OnHitEvent;
-                    playerWindow.stayEvent += OnStayEvent;
-                    playerWindow.Show();
-                }
-
-                DealerScoreLabel.Content = game.Dealer.PlayerHand.Score;
-                DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
-                DealerScoreLabel.IsEnabled = true;
-                StartBtn.IsEnabled = false;
-                Players.IsEnabled = false;
-                Decks.IsEnabled = false;
-                ShuffleBtn.IsEnabled = true;
-            }
-
-            else
-            {
-                MessageBox.Show("Must add at least one player!");
-            }
+             DealerScoreLabel.Content = game.Dealer.PlayerHand.Score;
+             DealerCardsListBox.Items.Add(game.Dealer.PlayerHand.ToString());
+             DealerScoreLabel.IsEnabled = true;
+             StartBtn.IsEnabled = false;
+             Players.IsEnabled = false;
+             Decks.IsEnabled = false;
+             ShuffleBtn.IsEnabled = true;
         }
 
         /// <summary>

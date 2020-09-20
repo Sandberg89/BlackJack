@@ -9,15 +9,28 @@ namespace LogicLayer.Entities
     /// </summary>
     public class GameUtils : EventArgs
     {
-        List<Player> players = new List<Player>();
-        Deck deck;
-        Player dealer;
-        int blackJackScore = 21;
+        private List<Player> players = new List<Player>();
+        private Deck deck;
+        private Player dealer;
+        private int blackJackScore = 21;
 
-        public List<Player> Players {
+        /// <summary>
+        /// List of all the players that are playing
+        /// </summary>
+        public List<Player> Players 
+        {
             get { return players; }
         }
 
+
+        public Deck Deck 
+        { 
+            get { return deck; }
+        }
+
+        /// <summary>
+        /// Property for a dealer
+        /// </summary>
         public Player Dealer
         {
             get { return dealer; }
@@ -77,6 +90,9 @@ namespace LogicLayer.Entities
             dealer.PlayerHand.AddCard(deck);
         }
 
+        /// <summary>
+        /// Method that checks if the players are thick
+        /// </summary>
         public void ArePlayersThick()
         {
             foreach (var player in players)
@@ -93,6 +109,9 @@ namespace LogicLayer.Entities
             }
         }
 
+        /// <summary>
+        /// Method that checks if the dealer is thick
+        /// </summary>
         public void IsDealerThick()
         {
             if (dealer.PlayerHand.Score > blackJackScore)

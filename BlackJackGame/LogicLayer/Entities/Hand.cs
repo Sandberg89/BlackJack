@@ -7,11 +7,12 @@ namespace LogicLayer.Entities
     public class Hand
     {
         private List<Card> hand = new List<Card>();
-        // private Card _card;
 
+        /// <summary>
+        /// Parameterless constructor for hand
+        /// </summary>
         public Hand()
         {
-            //this._card = new Card();
         }
 
         //return the amount of cards the player have 
@@ -53,6 +54,10 @@ namespace LogicLayer.Entities
             hand.Clear();
         }
 
+        /// <summary>
+        /// Method that prints the card hand and overrride ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if (hand.Count > 0)
