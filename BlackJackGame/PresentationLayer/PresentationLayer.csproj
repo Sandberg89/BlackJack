@@ -106,6 +106,10 @@
       <Project>{056c0764-d56e-4f96-a58d-3689b4cc6392}</Project>
       <Name>LogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{76e470f1-1cde-4e5b-b42d-98aab7054ffc}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

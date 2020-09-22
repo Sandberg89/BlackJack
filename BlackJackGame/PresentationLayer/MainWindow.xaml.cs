@@ -1,5 +1,6 @@
 ﻿// Name: Linus Sandberg. Date: 2020-09-20. Project: Black Jack Game Assignment 1
 using LogicLayer.Entities;
+using Utilities;
 using LogicLayer.Enums;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace PresentationLayer
     {
         Player player = new Player();
         Deck deck = new Deck(1);
-        GameUtils game = new GameUtils();
+        Utils game = new Utils();
         PlayerWindow playerWindow;
 
         /// <summary>
